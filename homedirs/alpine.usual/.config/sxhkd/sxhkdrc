@@ -25,7 +25,7 @@ super + shift + apostrophe
 super + space
 	rofi \
 		-combi-modes \
-		RUN:~/.config/rofi/rofi_scripts.sh,drun,window,BRAVE:~/.config/rofi/rofi_chromium_profiles.sh,LIBREWOLF:~/.config/rofi/rofi_firefox_profiles.sh \
+		drun,RUN:~/.config/rofi/rofi_scripts.sh,window,BRAVE:~/.config/rofi/rofi_chromium_profiles.sh,LIBREWOLF:~/.config/rofi/rofi_firefox_profiles.sh \
 		-theme solarized \
 		-show combi \
 		-kb-move-char-forward '' \

@@ -54,3 +54,9 @@ keyboard:
   - action: DecreaseFontSize
     key: NumpadSubtract
     mods: Control
+
+shell:
+  program: /bin/ash
+  args:
+    - --login
+
