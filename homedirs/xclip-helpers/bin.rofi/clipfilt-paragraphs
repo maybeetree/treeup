@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pbpaste  | tr '\n' '\a' | sed 's \a\a \r\r g;s|\a| |g' | tr '\r' '\n' | pbcopy
+

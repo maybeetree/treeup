@@ -1,0 +1,35 @@
+[Added Associations]
+application/epub+zip=org.pwmt.zathura-pdf-mupdf.desktop;
+application/pdf=com.github.xournalpp.xournalpp.desktop;
+application/x-mswinurl=org.xfce.mousepad.desktop;
+audio/flac=vlc.desktop;mpv.desktop;
+audio/mpeg=mpv.desktop;org.audacityteam.Audacity.desktop;vlc.desktop;
+audio/x-mpegurl=vlc.desktop;
+image/jpeg=gimp.desktop;
+image/png=gimp.desktop;feh.desktop;
+image/webp=gimp.desktop;
+image/x-portable-pixmap=nsxiv.desktop;
+message/rfc822=org.xfce.mousepad.desktop;
+video/mp2t=mpv.desktop;
+
+[Default Applications]
+application/pdf=org.pwmt.zathura.desktop;
+application/vnd.comicbook+zip=org.pwmt.zathura.desktop;
+application/vnd.comicbook-rar=org.pwmt.zathura.desktop;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=org.libreoffice.LibreOffice.calc.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.libreoffice.LibreOffice.writer.desktop;
+audio/x-vorbis+ogg=mpv.desktop;
+image/gif=nsxiv.desktop;
+image/jpeg=nsxiv.desktop;
+image/png=nsxiv.desktop;
+image/svg+xml=nsxiv.desktop;
+image/vnd.djvu+multipage=org.pwmt.zathura.desktop;
+image/webp=nsxiv.desktop;
+image/x-xcf=gimp.desktop;
+inode/directory=thunar.desktop;
+text/caltech-intermediate-form=de.klayout.KLayout.desktop;
+text/tab-separated-values=nvim.desktop;
+video/mp4=mpv.desktop;
+video/webm=mpv.desktop;
+video/x-matroska=mpv.desktop;
+x-scheme-handler/terminal=Alacritty.desktop;

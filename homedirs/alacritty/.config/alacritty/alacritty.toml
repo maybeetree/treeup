@@ -1,0 +1,41 @@
+[general]
+import=["~/.config/alacritty/colors-switch.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font.normal]
+family = "terminus"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "NumpadAdd"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "NumpadSubtract"
+mods = "Control"
+
+#[terminal]
+#
+#[terminal.shell]
+#program = "/bin/sh"
+#args = ["-l"]
+

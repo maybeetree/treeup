@@ -1,0 +1,6 @@
+*.vim*
+*.log
+*.bak
+*.pdf
+*.old
+

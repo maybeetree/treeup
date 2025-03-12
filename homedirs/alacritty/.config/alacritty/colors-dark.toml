@@ -1,0 +1,45 @@
+# Colors (High Contrast)
+
+# Default colors
+[colors.primary]
+background = '#000000'
+foreground = '#ffffff'
+
+# Colors the cursor will use if `custom_cursor_colors` is true
+[colors.cursor]
+text = '#aaaaaa'
+cursor = '#ff00ff'
+
+# Normal colors
+[colors.normal]
+black   = '#444444'
+red     = '#ff0000'
+green   = '#00ff00'
+yellow  = '#ffff00'
+blue    = '#5555ff'
+magenta = '#ff00ff'
+cyan    = '#00ffff'
+white   = '#ffffff'
+
+# Bright colors
+[colors.bright]
+black   = '#666666'
+red     = '#ff4444'
+green   = '#44ff44'
+yellow  = '#ffff44'
+blue    = '#7777ff'
+magenta = '#ff44ff'
+cyan    = '#44ffff'
+white   = '#ffffff'
+
+[colors.dim]
+black   = '#222222'
+red     = '#aa0000'
+green   = '#00aa00'
+yellow  = '#aaaa00'
+blue    = '#2222aa'
+magenta = '#aa00aa'
+cyan    = '#00aaaa'
+white   = '#aaaaaa'
+
+

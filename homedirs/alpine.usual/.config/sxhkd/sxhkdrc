@@ -1,0 +1,384 @@
+#
+# wm independent hotkeys
+#
+
+super + v ; {t, k, s, c}
+	kill -12 $(cat /tmp/bsphud.pid) ; {xsig-term.sh, xsig-kill.sh, xsig-stop.sh, xsig-cont.sh}
+
+Super_L + any
+	kill -10 $(cat /tmp/bsphud.pid)
+
+@Super_L + any
+	kill -12 $(cat /tmp/bsphud.pid)
+	#sh -c 'kill -SIGUSR2 $(cat /tmp/bsphud.pid)'
+
+XF86Launch1
+	toggle_kmonad.sh
+
+super + apostrophe
+	tesseract-clipboard-manga.sh
+
+super + shift + apostrophe
+	tesseract-clipboard-manga.sh horiz
+
+# program launcher
+super + space
+	rofi \
+		-combi-modes \
+		RUN:~/.config/rofi/rofi_scripts.sh,drun,window,BRAVE:~/.config/rofi/rofi_chromium_profiles.sh,LIBREWOLF:~/.config/rofi/rofi_firefox_profiles.sh \
+		-theme solarized \
+		-show combi \
+		-kb-move-char-forward '' \
+		-kb-remove-char-forward '' \
+		-kb-remove-to-eol '' \
+		-kb-secondary-copy  '' \
+		-kb-custom-1 "Ctrl+k" \
+		-kb-custom-2 "Ctrl+c" \
+		-kb-custom-3 "Ctrl+f" \
+		-kb-custom-4 "Ctrl+d" \
+		-kb-custom-5 "Ctrl+t"
+
+super + alt + space
+	rofi \
+		-theme solarized \
+		-show OPEN:~/.config/rofi/rofi_files.sh \
+		-kb-move-char-forward '' \
+		-kb-move-char-forward '' \
+		-kb-remove-char-forward '' \
+		-kb-remove-to-eol '' \
+		-kb-secondary-copy  '' \
+		-kb-custom-1 "Ctrl+k" \
+		-kb-custom-2 "Ctrl+c" \
+		-kb-custom-3 "Ctrl+f" \
+		-kb-custom-4 "Ctrl+d" \
+		-kb-custom-5 "Ctrl+t" 
+
+#super + Menu
+#	rofi \
+#		-combi-modi \
+#		:RUN:~/.config/rofi/rofi_scripts.sh,drun,window,BRAVE:~/.config/rofi/rofi_chromium_profiles.sh,LIBREWOLF:~/.config/rofi/rofi_firefox_profiles.sh,OPEN:~/.config/rofi/rofi_files.sh,SNIPPET:~/.config/rofi/rofi_snippets.sh,emoji \
+#		-theme solarized \
+#		-show combi \
+#		-kb-move-char-forward '' \
+#		-kb-remove-char-forward '' \
+#		-kb-custom-1 "Ctrl+t" \
+#		-kb-custom-2 "Ctrl+c" \
+#		-kb-custom-3 "Ctrl+f" \
+#		-kb-custom-4 "Ctrl+d"
+
+# calculator
+super + F5
+	rofi \
+		-modi \
+		calc \
+		-theme solarized \
+		-show calc
+
+#super + g
+#	xcapt
+
+# nmtui
+# Doesn't work for some reason?
+super + shift + n
+	nmtui.sh
+	
+# make sxhkd reload its configuration files:
+super + @Escape
+	sleep 1; pkill -USR1 -x sxhkd ; notify-send sxhkd reloaded
+
+# fcitx hotkeys
+super + @F1
+	sh -c "fcitx5-remote -s keyboard-us"
+super + @F2
+	sh -c "fcitx5-remote -s keyboard-ru"
+super + @F3
+	sh -c "fcitx5-remote -s mozc"
+
+# dropdown terminal
+super + d
+	tdrop -x 2% -y 2% -w 95% -h 95% -ma -s dropdown alacritty
+
+# swallow super key so it doesn't get passed down
+# to other programs. Useful for when an application
+# is waiting for any key, but you want to switch
+# to a different window.
+#Super_L
+#	true
+
+# volume
+{_, ctrl, shift} + XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +{3,1,5}%
+{_, ctrl, shift} + XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -{3,1,5}%
+alt + {XF86AudioRaiseVolume, XF86AudioLowerVolume} + {_, ctrl, shift}
+	mpc volume {+,-}{3,1,5}
+
+# External display brightness
+
+alt + Home
+	ddcutil --display 1 setvcp 10 + 10
+
+alt + End
+	ddcutil --display 1 setvcp 10 - 10
+
+@XF86ScreenSaver
+	sleep 0.6; lock.sh
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioMicMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+XF86AudioPlay
+	mpc toggle
+	#test $(pactl get-sink-volume @DEFAULT_SINK@ | grep -Eo '[0-9]+%' | head -n 1 | tr -d '%') -ge 60 && notify-send "Too loud!!" || mpc toggle
+
+alt + XF86AudioPlay
+	playerctl -p $(playerctl -l | dmenu.sh) play-pause
+
+XF86AudioNext
+	mpc next
+	
+XF86AudioPrev
+	mpc prev
+
+super + shift + p
+	rofi \
+		-theme solarized \
+		-show RBW:~/.config/rofi/rofi_rbw.sh \
+		-kb-row-up 'Up' \
+		-kb-remove-to-sol '' \
+		-kb-secondary-copy  '' \
+		-kb-custom-1 "Ctrl+u" \
+		-kb-custom-2 "Ctrl+p" \
+		-kb-custom-3 "Ctrl+c"
+
+super + shift + e
+	rofi \
+		-theme solarized \
+		-show KAOMOJI:~/.config/rofi/rofi_kaomoji.sh
+
+super + ctrl + p
+	rofi -theme solarized -show PASS:~/.config/rofi/rofi_nitrokey.sh
+	
+	#rofi -theme solarized -show SPASM:~/DATA/me/Programs/spasm/rofi_spasm.sh 
+	#matmenu.sh
+
+#
+# bspwm hotkeys
+#
+
+# select or send to desktop on current monitor
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} 'focused:^{1-9,10}' --follow; kill -10 $(cat /tmp/bsphud.pid)
+
+# quit/restart bspwm
+super + alt + r
+	bspc wm -r
+
+super + alt + q
+	killall supervisord
+
+# close or kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send focused node to newest preselected
+# OR
+# swap with biggest or smallest
+super + {_,shift +}Return
+	bash -c "\
+	bspc node -n 'newest.!automatic' || \
+	bspc node -s {biggest, smallest}.local"
+
+# split into biggest or smallest node
+super + {_,shift +} i
+	bspc node -n {biggest, smallest}.local
+
+# rotate two windows or whole mon
+super + {shift +,_} r
+	bspc node {@/,@parent} -R 90
+	
+
+# send the focused node to the newest preselected node
+#super + y
+#	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+#super + g
+#	bspc node -s biggest
+
+
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# super-fullscreen
+super + shift + f
+	~/binmat/bspwm_super_fullscreen.sh
+
+## window flags
+#hyper + shift + {s, l}
+#	bspc node -g {sticky, locked}
+
+# Minimise window
+super + u
+	bspc node --flag hidden=on --to-desktop X
+
+# Unminimise window
+super + shift + u
+	bspc node $(bspc query -N -n .hidden | xargs -n 1 xwininfo -id  | grep xwininfo | cut -d : -f 3- | dmenu -i -l 30 -fn "IBM Plex Sans:pixelsize=30" | cut -d ' ' -f 2) --flag hidden=off --to-desktop focused --focus
+
+# Find window
+super + y
+	bspwm_find_window.sh
+
+# Summon window
+super + shift + y
+	bspc node $(bspc query -N | xargs -n 1 xwininfo -id  | grep xwininfo | cut -d : -f 3- | dmenu -i -l 30 -fn "IBM Plex Sans:pixelsize=30" | cut -d ' ' -f 2) --flag hidden=off --to-desktop focused --focus
+
+#
+# focus/swap
+#
+
+# focus or send to the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}; kill -10 $(cat /tmp/bsphud.pid)
+
+## focus or send to the monitor in the given direction
+#super + alt + {_,shift} + {h,j,k,l}
+#	bspc {monitor -f, node -m} {west,south,north,east} --follow
+
+# focus or send to the next/previous monitor
+super + {_,shift} + {comma,period}
+	bspc {monitor -f, node -m} {prev,next} --follow; kill -10 $(cat /tmp/bsphud.pid)
+
+# move (swap) entire workspace to monitor
+super + alt + {comma, period}
+	bspc desktop -s {prev,next}:focused --follow; kill -10 $(cat /tmp/bsphud.pid)
+
+# move (swap) entire desktop with its neighbours
+super + alt + bracket{left,right}
+	bspc desktop --swap {prev,next}.local --follow; kill -10 $(cat /tmp/bsphud.pid)
+
+# add desktop
+super + equal
+	bspc monitor -a $(date +%s); kill -10 $(cat /tmp/bsphud.pid)
+
+# remove desktop
+super + minus
+	bspc desktop -r; kill -10 $(cat /tmp/bsphud.pid)
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+super + {_,shift + } Tab
+	bspc node -f {next,prev}.local.leaf
+
+# focus the next/previous desktop in the current monitor
+super + {_,shift +} bracket{left,right}
+	bspc {desktop -f, node -d} {prev,next}.local --follow; kill -10 $(cat /tmp/bsphud.pid)
+
+# focus the last node
+super + grave
+	bspc node -f last
+
+# focus the older or newer node in the focus history
+#super + {o,i}
+#	bspc wm -h off; \
+#	bspc node {older,newer} -f; \
+#	bspc wm -h on
+
+# focus or send to the given desktop
+#super + {_,shift + }{1-9,0}
+#	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+#super + alt + {h,j,k,l}
+#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+#super + alt + shift + {h,j,k,l}
+#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# balance desktop
+super + n
+	bspc node @focused:/ --balance
+
+
+
+
+# Make gaps bigger
+super + shift+ button4
+	bspc config window_gap $(expr $(bspc config window_gap) + 1)
+
+# Make gaps smaller
+super + shift+ button5
+	bspc config window_gap $(expr $(bspc config window_gap) - 1)
+
+# reset border and gaps
+super + button2
+	bspc config window_gap 12; bspc config border_width 4
+
+# cycle windows with mouse
+#super + button{4,5}
+#	bspc node -f {next,prev}.local
+
+
+super + shift + b
+	bspc config bottom_padding 0 && polybar-msg cmd toggle
+#	[[ $(bspc config top_padding) -gt 0 ]] && bspc config top_padding 0 || bspc config top_padding 25
+
+# remove current monitor
+super + alt + shift + d
+	bspc monitor -r
+
+# make windows floating by default
+super + alt + s
+	bspc rule -a \* state=floating; notify-send "WM STATE" FLOATING
+
+# make all windows tiled by default
+super + alt + t
+	bspc rule -r ^$(bspc rule -l | grep -n "\*:\*:\* => state=floating" | head -c 1); notify-send "WM STATE" TILING
+
+
+
+

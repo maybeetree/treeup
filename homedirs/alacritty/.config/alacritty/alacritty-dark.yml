@@ -1,0 +1,56 @@
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#ffffff'
+  cursor:
+    text: '#aaaaaa'
+    cursor: '#ff00ff'
+  normal:
+    black: '#444444'
+    red: '#ff0000'
+    green: '#00ff00'
+    yellow: '#ffff00'
+    blue: '#5555ff'
+    magenta: '#ff00ff'
+    cyan: '#00ffff'
+    white: '#ffffff'
+  bright:
+    black: '#666666'
+    red: '#ff4444'
+    green: '#44ff44'
+    yellow: '#ffff44'
+    blue: '#7777ff'
+    magenta: '#ff44ff'
+    cyan: '#44ffff'
+    white: '#ffffff'
+  dim:
+    black: '#222222'
+    red: '#aa0000'
+    green: '#00aa00'
+    yellow: '#aaaa00'
+    blue: '#2222aa'
+    magenta: '#aa00aa'
+    cyan: '#00aaaa'
+    white: '#aaaaaa'
+env:
+  TERM: xterm-256color
+font:
+  normal:
+    family: terminus
+keyboard:
+  bindings:
+  - action: IncreaseFontSize
+    key: Equals
+    mods: Control
+  - action: IncreaseFontSize
+    key: Plus
+    mods: Control
+  - action: IncreaseFontSize
+    key: NumpadAdd
+    mods: Control
+  - action: DecreaseFontSize
+    key: Minus
+    mods: Control
+  - action: DecreaseFontSize
+    key: NumpadSubtract
+    mods: Control
