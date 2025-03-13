@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for homedir in alacritty
+for homedir in alacritty nvim-lite
 do
 	cp \
 		--reflink=auto \
