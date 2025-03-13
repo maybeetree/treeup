@@ -1,4 +1,4 @@
-*.vim*
+./*.vim*
 *.log
 *.bak
 *.pdf
