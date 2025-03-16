@@ -8,6 +8,8 @@ printf '%s\n' ~/rsyncdata/data/proj/etec/EE*/*/useful/*
 printf '%s\n' ~/rsyncdata/data/proj/etec/EE*/*/hw
 printf '%s\n' ~/rsyncdata/data/proj/etec/EE*/*/lab
 
+printf '%s\n' ~/rsyncdata/data/proj/*
+
 #find ~/DATA/world/etec/Y*/*/hw
 #find ~/DATA/world/etec/Y*/*/lec
 #find ~/DATA/world/etec/Y*/*/exam

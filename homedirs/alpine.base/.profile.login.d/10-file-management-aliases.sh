@@ -4,12 +4,12 @@ alias c="cp -r --reflink=always -i"
 alias r="trash -v"
 alias m="mv -i"
 alias o="handlr open"
-alias d..="d .."
-alias d...="d ../.."
-alias d....="d ../../.."
-alias d.....="d ../../../.."
-alias d......="d ../../../../.."
-alias d.......="d ../../../../../.."
+alias ,,="d .."
+alias ,,,="d ../.."
+alias ,,,,="d ../../.."
+alias ,,,,,="d ../../../.."
+alias ,,,,,,="d ../../../../.."
+alias ,,,,,,,="d ../../../../../.."
 
 d() {
 	cd "$@" && l

@@ -239,4 +239,9 @@ nnoremap <F4>j <C-\><C-N>:WikiJournal<CR>
 "vnoremap g <C-q> :s/\. /.\r/g | s/, /,\r/g<CR>
 "vnoremap g <C-q> :s/\. /.\r/g<CR>
 
+" Edit files (e.g. git commit message) directly in running nvim
+" instead of spawning nested nvim
+" make sure shell rc file doesn't override this
+"let $EDITOR='nvim --server "$NVIM" --remote-tab-silent'
+
 
