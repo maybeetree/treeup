@@ -184,11 +184,11 @@ let g:findfiles='find ./
 
 function! FzfFilePicker()
 	" Run fzf to select a file
-	let l:file = fzf#run({
+	let l:file = fzf#run(fzf#wrap({
 				\ 'source': g:findfiles,
 				\ 'sink': 'edit',
 				\ 'options': '--preview "cat {}"'
-				\ })
+				\ }))
 
 	" Check if a file was selected
 	if !empty(l:file)
@@ -243,5 +243,7 @@ nnoremap <F4>j <C-\><C-N>:WikiJournal<CR>
 " instead of spawning nested nvim
 " make sure shell rc file doesn't override this
 "let $EDITOR='nvim --server "$NVIM" --remote-tab-silent'
+
+let g:typst_cmd = '/bin/false'
 
 
