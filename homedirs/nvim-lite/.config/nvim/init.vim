@@ -2,6 +2,10 @@
 " slash-ESC to clear search
 nnoremap /<esc> :let @/ = ""<return>
 
+" Move up/down display lines, not physical lines
+nnoremap j gj
+nnoremap k gk
+
 " Default spellcheck language: Br*tish english
 set spelllang=en_gb
 " Use :setlocal spell to activate for a buffer
@@ -24,8 +28,7 @@ set colorcolumn=80
 " maybe even different version of same terminal???
 hi ColorColumn ctermfg=Gray ctermbg=Gray
 
-" Looks good in both dark and light terminal colors
-set bg=light
+set bg=dark
 
 " Force terminal to run shell in login mode
 set shell=$SHELL\ -l
@@ -56,6 +59,13 @@ set clipboard=unnamedplus
 :inoremap <A-]> <C-\><C-N>gt
 :nnoremap <A-]> gt
 
+":tnoremap <Esc><Esc> <C-\><C-n>
+:tnoremap <A-Esc> <C-\><C-n>
+":inoremap <Esc><Esc> <C-\><C-n>
+:inoremap <A-Esc> <C-\><C-n>
+":nnoremap <Esc><Esc> <C-\><C-n>
+:nnoremap <A-Esc> <C-\><C-n>
+
 function! Asplit()
 	if winwidth(0) > (winheight(0) * 2)
 		:vsplit
@@ -63,45 +73,38 @@ function! Asplit()
 		:split
 	endif
 endfunction
+function! NAsplit()
+	if winwidth(0) > (winheight(0) * 2)
+		:split
+	else
+		:vsplit
+	endif
+endfunction
 command! Asplit call Asplit()
+command! NAsplit call NAsplit()
 
 " New splits open to the right and below
 " (the default is left and above, wtf would you want that!?)
 set splitright
 set splitbelow
 
-"" hit backslash t to open a terminal in a split
-":nnoremap <leader>t :vsplit<cr>:term<cr>i
-"" hit backslash w to open a terminal in a new window
-":nnoremap <leader>w :tabedit<cr>:term<cr>i
-"" hit backslash twice to run previous command in the last opened terminal
-
 :nnoremap <A-s> :Asplit<cr>
+:nnoremap <A-v> :NAsplit<cr>
 :nnoremap <A-t> :Asplit<cr>:term<cr>i
 :nnoremap <A-w> :tabedit<cr>:term<cr>i
 
-:nnoremap <A-s> <C-\><C-N>:Asplit<cr>
-:tnoremap <A-t> <C-\><C-N>:vsplit<cr>:term<cr>i
+:tnoremap <A-s> <C-\><C-N>:Asplit<cr>
+:tnoremap <A-v> <C-\><C-N>:NAsplit<cr>
+:tnoremap <A-t> <C-\><C-N>:Asplit<cr>:term<cr>i
 :tnoremap <A-w> <C-\><C-N>:tabedit<cr>:term<cr>i
 
 :inoremap <A-s> <C-\><C-N>:Asplit<cr>
-:inoremap <A-t> <C-\><C-N>:vsplit<cr>:term<cr>i
+:inoremap <A-v> <C-\><C-N>:NAsplit<cr>
+:inoremap <A-t> <C-\><C-N>:Asplit<cr>:term<cr>i
 :inoremap <A-w> <C-\><C-N>:tabedit<cr>:term<cr>i
 
-
-
-" hit backslash twice to run previous command in the last opened terminal
-:nnoremap <leader><leader> :TermSendUpEnter<cr>
-" hit backslash x to send ctrl-c to the last opened terminal
-:nnoremap <leader>x :TermSendCtrlC<cr>
-" hit backslash X to send ctrl-d to the last opened terminal
-:nnoremap <leader>X :TermSendCtrlD<cr>
 " Press space in normal mode to open a filepicker (requires fzf)
 :nnoremap <space> :FzfFilePicker<cr>
-
-" Press <leader>space in normal mode to open a filepicker for vimwiki
-" (requires fzf)
-:nnoremap <leader><space> :FilepickerVimwiki<cr>i
 
 
 " remember the chan id (buffer id) of the last terminal buffer
@@ -246,4 +249,102 @@ nnoremap <F4>j <C-\><C-N>:WikiJournal<CR>
 
 let g:typst_cmd = '/bin/false'
 
+" Disable git pager since nvim itself makes for a darn good pager
+let $GIT_PAGER = 'head -n 20'
+
+autocmd FileType html setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+""""""""""""""""""""""""""""""""""""""""
+
+function! UpEnter()
+    " Get the current tab page number
+    let current_tab = tabpagenr()
+
+    " Iterate through all windows in the current tab
+    for winnr in range(1, winnr('$'))
+        " Check if the window is a terminal buffer
+        "if &buftype[winnr] == 'terminal'
+		if getwinvar(winnr, '&buftype', 'ERROR') ==# 'terminal'
+            " Switch to the terminal window
+            execute winnr . 'wincmd w'
+
+            " Send <Up Arrow> and <Return> keys to the terminal
+            "normal! \<Up>\<CR>
+			"call nvim_feedkeys(nvim_replace_termcodes("i<Up><Return><C-\\><C-n><c-w><c-p>", 1, 0, 1), 't', 1)
+			call nvim_feedkeys(nvim_replace_termcodes("i", 1, 0, 1), 't', 1)
+			call sleep(10)
+			call nvim_feedkeys(nvim_replace_termcodes("<Up>", 1, 0, 1), 't', 1)
+			call sleep(10)
+			call nvim_feedkeys(nvim_replace_termcodes("<Return>", 1, 0, 1), 't', 1)
+			call sleep(10)
+			call nvim_feedkeys(nvim_replace_termcodes("<C-\\><C-n><c-w><c-p>", 1, 0, 1), 't', 1)
+			"execute 'wincmd w'
+            return
+        endif
+    endfor
+
+    " If no terminal window found, display an error message
+    echo "No terminal window found in the current tab."
+endfunction
+
+nnoremap <Leader><Leader> <esc>:call UpEnter()<CR>
+
+function! PasteRegister5ToTerminal()
+  " Save current window
+  let l:cur_win = win_getid()
+
+  " Loop through windows in the tab
+  for l:win in range(1, winnr('$'))
+    if getbufvar(winbufnr(l:win), '&buftype') ==# 'terminal'
+      " Switch to the terminal window
+      exec l:win . 'wincmd w'
+
+      " Send the contents of register 5 as terminal input
+      call chansend(b:terminal_job_id, getreg('5') . "\n")
+
+      " Go back to original window
+      call win_gotoid(l:cur_win)
+      return
+    endif
+  endfor
+
+  echo "No terminal buffer found in current tab."
+endfunction
+
+" Optional: map it to a key (e.g. <Leader>p)
+"nnoremap <Leader><Leader> "5yy<esc>:CleanReg5<CR>:call PasteRegister5ToTerminal()<CR>
+
+function! StripIndentFromRegister5()
+  " Get the contents of register 5 as a string
+  let l:reg = getreg('5')
+
+  " Split into lines
+  let l:lines = split(l:reg, "\n")
+
+  " Remove leading whitespace from each line
+  for i in range(len(l:lines))
+    let l:lines[i] = substitute(l:lines[i], '^\s\+', '', '')
+  endfor
+
+  " Join lines back into a string
+  let l:new_reg = join(l:lines, "\n")
+
+  " Put the cleaned string back into register 5
+  call setreg('5', l:new_reg)
+endfunction
+
+" Optional: map to a command
+command! CleanReg5 call StripIndentFromRegister5()
+
+" alt-e for netrw
+
+nnoremap <A-e> :Explore<CR>
+inoremap <A-e> <C-\><C-N>:Explore<CR>
+tnoremap <A-e> <C-\><C-N>:Explore<CR>
+
+command! -nargs=0 -bar Autosave autocmd TextChanged,TextChangedI <buffer> silent write
+
+for f in split(glob('~/.config/nvim/init.vim.d/*.vim'), '\n')
+    exe 'source' f
+endfor
 

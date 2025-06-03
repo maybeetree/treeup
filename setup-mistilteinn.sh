@@ -1,6 +1,27 @@
 #!/bin/sh
 
-for homedir in alpine.base alpine.usual force-busybox xclip-helpers dragon-drop nvim-lite mistilteinn-screen-layout alacritty
+
+if [ "$(hostname)" != mistilteinn ]
+then
+	echo "Not mistilteinn! are u sure?"
+	read n
+fi
+
+for homedir in \
+	profile.d \
+	tmux \
+	usual \
+	ibus-anthy \
+	force-busybox \
+	xclip-helpers \
+	dragon-drop \
+	nvim-lite \
+	mistilteinn-screen-layout \
+	alacritty \
+	mistilteinn-tablet \
+	w3m \
+	git \
+	sudo-doas
 do
 	cp \
 		--reflink=auto \

@@ -1,0 +1,12 @@
+#!/bin/sh
+if [ -z "$WHEREAMI" ]
+then
+	. ~/.profile
+	if [ -z "$WHEREAMI" ]
+	then
+		echo '$WHEREAMI not set and not in ~/.profile, bye!'
+		exit 1
+	fi
+fi
+exec redshift -l "$WHEREAMI"
+

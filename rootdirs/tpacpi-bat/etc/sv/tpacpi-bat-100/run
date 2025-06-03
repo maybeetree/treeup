@@ -1,0 +1,9 @@
+#!/bin/sh
+exec 2>&1
+set -e
+echo "Setting battery profile to default"
+tpacpi-bat -s ST 1 0
+tpacpi-bat -s SP 1 0
+echo "Done!"
+exec chpst -b tpacpi-bat-100 pause
+

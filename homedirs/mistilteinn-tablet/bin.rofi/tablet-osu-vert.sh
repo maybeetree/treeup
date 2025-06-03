@@ -1,0 +1,1 @@
+xinput set-prop '16' 'Coordinate Transformation Matrix' 0.000000 -1.304348 1.304348 1.000000 0.000000 -0.250000 0.000000 0.000000 1.000000

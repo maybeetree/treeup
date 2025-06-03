@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#~/binmat/internal_only_zoom.sh
+mon_internal_1600x900_native.sh 
+
+sleep 1
+bspc monitor LVDS-1 -f
+sleep 1
+bspc monitor 'any.!focused' -r
+sleep 1
+bspc monitor -d I II III IV V VI VII VIII IX X
+sleep 1
+bspc wm -o
+
+
+#bspc monitor LVDS1 -f
+#bspc monitor 'any.!focused' -r
+#bspc monitor 'any.!focused' -r
+#bspc monitor 'any.!focused' -r
+#bspc monitor 'any.!focused' -r
+#bspc monitor -d I II III IV V VI VII VIII IX X
+
+
+#random_wallpaper.sh
+#random_wallpaper_full.sh mobile
+#

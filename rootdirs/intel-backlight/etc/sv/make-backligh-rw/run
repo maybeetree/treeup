@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1
+set -e
+chmod 666 "$(realpath /sys/class/backlight/intel_backlight/brightness)"
+exec chpst -b make-backlight-rw pause
+

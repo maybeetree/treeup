@@ -1,0 +1,4 @@
+image/*; nsxiv %s
+#application/postscript;      ghostview %s
+#application/x-dvi;           xdvi %s
+

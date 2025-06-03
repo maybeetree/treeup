@@ -1,0 +1,2 @@
+#!/bin/sh
+exec xss-lock --transfer-sleep-lock -- i3lock --nofork --image ~/.config/X11/lock/lock.png

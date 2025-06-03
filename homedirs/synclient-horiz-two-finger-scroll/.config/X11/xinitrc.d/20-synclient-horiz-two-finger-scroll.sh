@@ -1,0 +1,2 @@
+synclient HorizTwoFingerScroll=1
+

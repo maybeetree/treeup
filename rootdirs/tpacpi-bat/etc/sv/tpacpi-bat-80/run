@@ -1,0 +1,10 @@
+#!/bin/sh
+exec 2>&1
+set -e
+echo "Setting battery profile to 80%"
+tpacpi-bat -s ST 1 75 
+tpacpi-bat -s SP 1 80
+echo "Done!"
+exec chpst -b tpacpi-bat-80 pause
+
+

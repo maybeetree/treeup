@@ -1,6 +1,9 @@
 #!/bin/sh
 
-for rootdir in xinitrc-from-display-manager
+for rootdir in \
+	xinitrc-from-display-manager \
+	force-evdev \
+	alsa-pipewire
 do
 	doas cp \
 		--reflink=auto \

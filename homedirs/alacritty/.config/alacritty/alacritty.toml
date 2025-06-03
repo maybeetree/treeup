@@ -33,9 +33,9 @@ action = "DecreaseFontSize"
 key = "NumpadSubtract"
 mods = "Control"
 
-#[terminal]
-#
-#[terminal.shell]
-#program = "/bin/sh"
-#args = ["-l"]
+[terminal]
+
+[terminal.shell]
+program = "/bin/ash"
+args = ["-l"]
 
