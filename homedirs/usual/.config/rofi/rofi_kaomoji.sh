@@ -18,6 +18,7 @@ if [ -z "$1" ]; then
 (っ⌒‿⌒)っ	hug
 ／人◕ ‿‿ ◕人＼	kyubey
 （︶︿︶)	sleep
+ᗜˬᗜ		fumo
 "
 else
 	coproc ( echo -n "$1" | cut -f 1 | head -c -1 | pbcopy > /dev/null 2>&1)

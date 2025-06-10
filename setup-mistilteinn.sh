@@ -17,6 +17,7 @@ for homedir in \
 	dragon-drop \
 	nvim-lite \
 	mistilteinn-screen-layout \
+	scrotsh \
 	alacritty \
 	mistilteinn-tablet \
 	w3m \
