@@ -150,6 +150,11 @@ let g:findfiles='find ./
 \	-name "__pycache__" -prune -o
 \	-name "__MACOSX" -prune -o
 \	-name "venv*" -prune -o
+\	-name "dist" -prune -o
+\	-name "build" -prune -o
+\	-name ".Trash*" -prune -o
+\	-name "*RECYCLE.BIN*" -prune -o
+\	-name "System Volume Information" -prune -o
 \	-name "*.egg-info" -prune -o
 \	-name "*.*cache" -prune -o
 \	-not -name "*.obsession~"
