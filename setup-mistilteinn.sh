@@ -12,7 +12,6 @@ for homedir in \
 	tmux \
 	usual \
 	ibus-anthy \
-	force-busybox \
 	xclip-helpers \
 	dragon-drop \
 	nvim-lite \

@@ -10,6 +10,9 @@ then
 	chsh $(whoami) -s $(which ash)
 
 else
+	podman pull docker.io/alpine:latest
+	podman tag alpine:latest maybetree-treeup-alpine
+
 	podman run \
 		-t \
 		--replace \
