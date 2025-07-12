@@ -17,6 +17,7 @@ for homedir in \
 	git \
 	synclient-horiz-two-finger-scroll \
 	w3m \
+	mpd \
 	loginctl-rofi
 do
 	cp \
