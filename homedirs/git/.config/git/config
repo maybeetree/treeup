@@ -6,6 +6,11 @@
 [init]
 	defaultBranch = main
 
+# Origin is almost always github or gitlab,
+# do not pollute it with annex branches
+[remote "origin"]
+	annex-sync = false
+
 [alias]
 	tree = log --oneline --graph --decorate --all
 
