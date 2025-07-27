@@ -390,4 +390,7 @@ XF86MonBrightnessDown
 XF86MonBrightnessUp
 	expr 300 + $(cat /sys/class/backlight/intel_backlight/brightness) > /sys/class/backlight/intel_backlight/brightness
 
+Print
+	~/bin.rofi/scrot.sh
+
 

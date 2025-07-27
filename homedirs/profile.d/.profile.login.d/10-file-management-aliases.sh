@@ -12,8 +12,63 @@ alias ,,,,,="d ../../../.."
 alias ,,,,,,="d ../../../../.."
 alias ,,,,,,,="d ../../../../../.."
 
+#d() {
+#	cd "$@" && l
+#}
+
 d() {
-	cd "$@" && l
+	# Path passed to cd
+	local target="$1"
+
+	# If no argument, default to $HOME
+	if [ -z "$target" ]; then
+		cd ~
+		return
+	fi
+
+	# Resolve full path
+	local fullpath=$(readlink -f "$target" 2>/dev/null)
+
+	# If it's a .zip file and exists
+	if [ -f "$fullpath" ]
+	then
+		case "$target" in
+			*.zip | *.tar)
+				if ! mount | grep -q ~/.avfs; then
+					echo "AVFS not mounted. Run: mountavfs"
+					return 1
+				fi
+
+				# Generate AVFS path
+				local avfs_path="$HOME/.avfs$fullpath#"
+
+				if [ -d "$avfs_path" ]; then
+					cd "$avfs_path" && l
+				else
+					echo "AVFS path not found: $avfs_path"
+					return 1
+				fi
+				;;
+			*)
+				cd "$target" && l
+				;;
+		esac
+	else
+		# Fallback to normal cd
+		cd "$target" && l
+	fi
+}
+
+avcd() {
+	case "$(pwd)" in
+		/home/*/.avfs*)
+			cd  "$(pwd | sed 's|^.*.avfs/|/|')"
+			;;
+		*)
+			cd ~/.avfs"$(pwd)"
+			;;
+	esac
+
 }
 
 rln() {

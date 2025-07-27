@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -n "$1" ]
+then
+	git add --all
+	git commit -m "$(printf '%s ' "$@")"
+else
+	git add --all
+	git commit -m "autocommit $(date)"
+fi
+
