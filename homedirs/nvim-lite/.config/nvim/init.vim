@@ -52,12 +52,18 @@ set clipboard=unnamedplus
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
 
+" square brackets to switch tabs
 :tnoremap <A-[> <C-\><C-N>gT
 :inoremap <A-[> <C-\><C-N>gT
 :nnoremap <A-[> gT
 :tnoremap <A-]> <C-\><C-N>gt
 :inoremap <A-]> <C-\><C-N>gt
 :nnoremap <A-]> gt
+
+" alt-m to open this buffer in new tab
+:tnoremap <A-m> <C-\><C-N><C-w>s<C-w>T
+:inoremap <A-m> <C-\><C-N><C-w>s<C-w>T
+:nnoremap <A-m> <C-w>s<C-w>T
 
 ":tnoremap <Esc><Esc> <C-\><C-n>
 :tnoremap <A-Esc> <C-\><C-n>
@@ -255,7 +261,7 @@ nnoremap <F4>j <C-\><C-N>:WikiJournal<CR>
 let g:typst_cmd = '/bin/false'
 
 " Disable git pager since nvim itself makes for a darn good pager
-let $GIT_PAGER = 'head -n 20'
+"let $GIT_PAGER = 'head -n 20'
 
 autocmd FileType html setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
 
