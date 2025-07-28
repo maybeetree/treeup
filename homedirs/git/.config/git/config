@@ -23,5 +23,3 @@
 	# "recursive-annex-sync-content"
 	rasc = "!git submodule foreach --recursive 'git annex sync -a --content' && git annex sync -a --content"
 
-# test123
-
