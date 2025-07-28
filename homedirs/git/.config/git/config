@@ -11,6 +11,17 @@
 [remote "origin"]
 	annex-sync = false
 
+# Phone is usually offline
+[remote "fp3.home"]
+	annex-sync = false
+
 [alias]
 	tree = log --oneline --graph --decorate --all
+	which = ls-files --others --exclude-standard
+	# "recursive-annex-sync"
+	ras = "!git submodule foreach --recursive 'git annex sync -a ' && git annex sync -a"
+	# "recursive-annex-sync-content"
+	rasc = "!git submodule foreach --recursive 'git annex sync -a --content' && git annex sync -a --content"
+
+# test123
 
