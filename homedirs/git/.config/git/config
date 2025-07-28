@@ -19,7 +19,7 @@
 	tree = log --oneline --graph --decorate --all
 	which = ls-files --others --exclude-standard
 	# "recursive-annex-sync"
-	ras = "!git submodule foreach --recursive 'git annex sync -a ' && git annex sync -a"
+	ras = "!git submodule foreach --recursive 'git annex sync --commit ' && git annex sync --commit "
 	# "recursive-annex-sync-content"
-	rasc = "!git submodule foreach --recursive 'git annex sync -a --content' && git annex sync -a --content"
+	rasc = "!git submodule foreach --recursive 'git annex sync --commit --content' && git annex sync --commit --content"
 
