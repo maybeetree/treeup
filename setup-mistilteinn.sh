@@ -21,6 +21,7 @@ for homedir in \
 	mistilteinn-tablet \
 	w3m \
 	git \
+	mpd \
 	sudo-doas
 do
 	cp \
