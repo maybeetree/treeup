@@ -1,19 +1,5 @@
 #!/bin/sh
 
-#
-# ~/.xinitrc
-#
-# Executed by startx (run your window manager from here)
-#
-#
-
-#set -e
-
-#kill_all_xdg_portals.sh || true
-
-
-#sleep 0.7
-
 if [ -z "$DISPLAY" ]; then
 	echo "Uayyyyy!!!"
 	exit 1
@@ -27,28 +13,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Should be initialized somehow else but idk
-if [ -z "$XDG_RUNTIME_DIR" ]; then
-	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
-
-	mkdir -pm 0700 "$XDG_RUNTIME_DIR"
-	export XDG_RUNTIME_DIR
-fi
-
-# For fcitx/mozc
+#if [ -z "$XDG_RUNTIME_DIR" ]; then
+#	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
 #
-#export GTK_IM_MODULE=fcitx 
-#export XMODIFIERS=@im=fcitx 
-#export QT_IM_MODULE=fcitx 
-#export XIM_PROGRAM=/usr/bin/fcitx 
-#
-# For ibus / anthy
+#	mkdir -pm 0700 "$XDG_RUNTIME_DIR"
+#	export XDG_RUNTIME_DIR
+#fi
 
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-
-#export GTK3_MODULES=/usr/local/lib/libplotinus.so 
-#gsettings set com.worldwidemann.plotinus:/com/worldwidemann/plotinus/default/ hotkeys '["<Primary><Alt>P"]'
 
 #export QT_STYLE_OVERRIDE=adwaita-dark
 export XCURSOR_THEME="Breeze_Snow"
@@ -61,11 +32,6 @@ xrdb -merge ~/.config/X11/Xresources
 
 xsetroot -cursor_name left_ptr
 
-#synclient HorizTwoFingerScroll=1
-
-#exec dbus-launch launch_de.sh
-#eval "$(dbus-launch --exit-with-x11 --sh-syntax)"
-
 for script in ~/.config/X11/xinitrc.d/*.sh ; do
 	if [ -r "$script" ] ; then
 		. "$script"
@@ -74,16 +40,5 @@ done
 unset script
 
 runsvdir ~/.var/service
-
-#polybar &
-#sxhkd &
-#ibus-daemon &
-#pipewire &
-#pipewire-pulse &
-#wireplumber &
-#bsphud &
-#redshift -l "$WHEREAMI" &
-$bspwm
-
 
 
