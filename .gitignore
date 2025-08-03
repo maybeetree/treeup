@@ -90,7 +90,9 @@ CMakeInit.txt
 
 ### Project-specific ###
 
-
+!**/init.vim.d/*.vim
+!**/nvim/*.vim
+!lock.png
 
 
 
