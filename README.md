@@ -200,7 +200,7 @@ unused
 
 ### runit-rshared-root
 Runit script to make root have rshared propagation on system boot.
-This is the default under s\*stemd,
+This is the default under systemd,
 but not on vanilla linux.
 Needed for podman, docker, and flatpak to work correctly.
 
