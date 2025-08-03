@@ -3,6 +3,7 @@
 for homedir in \
 	profile.d \
 	termux-git-annex \
+	typos \
 	nvim-lite
 do
 	cp \
