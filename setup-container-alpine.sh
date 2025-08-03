@@ -15,6 +15,7 @@ then
 
 	for homedir in \
 		profile.d \
+		prompt \
 		autovenv \
 		fastfetch-on-login
 	do

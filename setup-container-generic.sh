@@ -15,6 +15,7 @@ then
 
 	for homedir in \
 		profile.d \
+		prompt \
 		autovenv \
 		nvim-lite \
 		fastfetch-on-login

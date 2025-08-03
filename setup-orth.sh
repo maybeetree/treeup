@@ -3,6 +3,7 @@
 for homedir in \
 	tmux \
 	profile.d \
+	prompt \
 	alacritty \
 	nvim-lite \
 	usual \

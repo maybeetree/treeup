@@ -9,6 +9,7 @@ fi
 
 for homedir in \
 	profile.d \
+	prompt \
 	tmux \
 	usual \
 	ibus-anthy \
