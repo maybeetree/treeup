@@ -90,6 +90,7 @@ CMakeInit.txt
 
 ### Project-specific ###
 
+!**/init.vim.d
 !**/init.vim.d/*.vim
 !**/nvim/*.vim
 !**/nvim/**/*.vim
