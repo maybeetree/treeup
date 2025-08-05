@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Reverse Double-ended annex sync
+
+if [ -z "$1" ]
+then
+	echo "usage: $0 <remote>"
+fi
+
+set -e
+message="git-rdas $(date)"
+ssh "$1" "cd '$(realpath . --relative-to "$HOME")' && git commit -a -m '$message' && git annex sync"
+git annex sync "$1"
+

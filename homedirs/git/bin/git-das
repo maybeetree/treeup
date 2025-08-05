@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Double-ended annex sync
+
+if [ -z "$1" ]
+then
+	echo "usage: $0 <remote>"
+fi
+
+set -e
+git annex sync "$1"
+ssh "$1" "cd '$(realpath . --relative-to "$HOME")' && git annex sync"
+
