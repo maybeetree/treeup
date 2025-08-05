@@ -5,6 +5,7 @@
 if [ -z "$1" ]
 then
 	echo "usage: $0 <remote>"
+	exit 9
 fi
 
 set -e
