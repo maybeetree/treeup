@@ -59,6 +59,32 @@ re-building the entire image.
 
 ## Homedirs
 
+### nvim-lite
+Fairly minimal nvim config.
+Features:
+
+- Simplified tab/split navigation based on `alt` key
+    - `alt` + `hjkl` moves around splits
+    - `alt` + `[]` moves left and right through tabs
+    - `alt` + `m` opens current buffer in new tab
+    - `alt` + `esc` puts terminal buffer into normal mode
+    - `alt` + `s` splits current buffer
+        - direction chosen automatically
+        - `alt` + `v` splits in the opposite of the automatic
+            direction
+    - `alt` + `t` opens terminal in new split
+    - `alt` + `w` opens terminal in new tab
+    - `alt` + `e` opens NetRW in current split
+- Space opens fzf filepicker
+- `\` then `\` again executes the last command in the first
+    `terminal split in the current tab
+- VimWiki commands behind F4 as leader key (work in progress)
+- `j` and `k` move through logical lines, not physical
+- Disable truecolor and use ansi colors
+- VIM clipboard is system clipboard
+- All vimscript files from `~/.config/nvim/init.vim.d`
+    loaded automatically
+
 ### alacritty
 Config for the best terminal emulator
 
@@ -80,16 +106,20 @@ Run fastfetch (or whatever alternative is installed)
 on login. For containers.
 
 ### fcitx-mozc
-Fcitx and mozv configuration to type in English, Russian, and Japanese
+Fcitx and mozv configuration to type in English, Russian, and Japanese.
+Adds `:FcitxThingy` command to nvim, which, when activated,
+automatically switches between English and other languages
+when you switch between normal and insert mode
+(stolen from archwiki).
 
 ### force-busybox
 Not used. Use busybox for all coreutils
 
 ### git
-My git config with some aliases and basic rules for git-annex
+My git config with some aliases, scripts, and basic rules for git-annex
 
 ### i3lock
-Lock the screen using i2lock and xss-lock
+Lock the screen using i3lock and xss-lock
 
 ### ibus-anthy
 Same as `fcitx-mozc` for when neither fcitx nor mozc are available
@@ -98,7 +128,7 @@ Same as `fcitx-mozc` for when neither fcitx nor mozc are available
 This is from a dark time. Ignore it.
 
 ### loginctl-rofi
-Rofi scripts to control system power state thu loginctl
+Rofi scripts to control system power state thru loginctl
 
 ### mistilteinn-screen-layout
 Screen layout of mistilteinn computer
@@ -113,9 +143,6 @@ the best music player
 ### nano-is-nvim
 For stubborn programs that hardcode `nano` instead of
 using `$EDITOR` (unused).
-
-### nvim-lite
-My very simple nvim config
 
 ### profile.d
 A `~/.profile` script that sources all scripts under
