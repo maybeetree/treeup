@@ -6,6 +6,7 @@ for homedir in \
 	prompt \
 	nvim-lite \
 	fastfetch-on-ssh-login \
+	bashrc-is-profile \
 	sudo-doas
 do
 	cp \
