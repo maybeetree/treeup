@@ -5,7 +5,7 @@ set -e
 for rootdir in \
 	sudoers \
 	media \
-	runit-rshared-root \
+	runit-rshared-root
 do
 	sudo cp \
 		--reflink=auto \
