@@ -8,8 +8,8 @@ then
 	exit 9
 fi
 
-set -e
+#set -e
 message="git-rdas $(date)"
-ssh "$1" "cd '$(realpath . --relative-to "$HOME")' && git commit -a -m '$message' && git annex sync"
+ssh "$1" "cd '$(realpath . --relative-to "$HOME")' && git add --all && git commit -m '$message' && git annex sync"
 git annex sync "$1"
 
