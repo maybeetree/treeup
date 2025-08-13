@@ -44,7 +44,7 @@ case "$0" in
 		PS1='\[\n\e[1m$(exitstatus) \e[36m\u\033[m @ \e[1;32m\H\033[m: $(pwd | sed "s|^/home/$(id -un)|~|" '"$lolcat_cmd"')'"$extra_newline$prompt_style"'\]>>> \[\033[0m\]'
 		;;
 	bash)
-		PS1='\n\e[1m$(exitstatus) \e[36m\u\033[m @ \e[1;32m\H\033[m: $(pwd | sed "s|^/home/$(id -un)|~|" '"$lolcat_cmd"')'"$extra_newline$prompt_style"'>>> \[\033[0m\]'
+		PS1='\n\e[1m$(exitstatus) \e[36m\u\033[m @ \e[1;32m\H\033[m: $(pwd | sed "s|^/home/$(id -un)|~|" '"$lolcat_cmd"')'"$extra_newline"'\['"$prompt_style"'\]>>> \[\033[0m\]'
 		;;
 	*)
 		echo "Weird shell, not setting prompt" > /dev/stderr
