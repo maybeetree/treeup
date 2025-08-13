@@ -16,7 +16,7 @@ termwidth() {
 
 #PS1='\n\e[1m$(exitstatus) \e[36m\u\033[m @ \e[1;32m\H\033[m: $(pwd | sed "s|^/home/$(id -un)|~|" | lolcat -f -h 0.2)\[\033[1;96m\]>>> \[\033[0m\]'
 
-if ! (lolcat --version &>/dev/null)
+if ! (lolcat --version > /dev/null 2>&1 )
 then
 	lolcat_cmd=''
 	extra_newline="\n"
