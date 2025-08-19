@@ -16,7 +16,7 @@ termwidth() {
 
 #PS1='\n\e[1m$(exitstatus) \e[36m\u\033[m @ \e[1;32m\H\033[m: $(pwd | sed "s|^/home/$(id -un)|~|" | lolcat -f -h 0.2)\[\033[1;96m\]>>> \[\033[0m\]'
 
-if ! (lolcat --version &>/dev/null)
+if ! (lolcat --version > /dev/null 2>&1 )
 then
 	lolcat_cmd=''
 	extra_newline="\n"
@@ -39,7 +39,18 @@ else
 	prompt_style='\033[1;96m'
 fi
 
-PS1='\[\n\e[1m$(exitstatus) \e[36m\u\033[m @ \e[1;32m\H\033[m: $(pwd | sed "s|^/home/$(id -un)|~|" '"$lolcat_cmd"')'"$extra_newline$prompt_style"'\]>>> \[\033[0m\]'
+case "$0" in
+	*ash)
+		PS1='\[\n\e[1m$(exitstatus) \e[36m\u\033[m @ \e[1;32m\H\033[m: $(pwd | sed "s|^/home/$(id -un)|~|" '"$lolcat_cmd"')'"$extra_newline$prompt_style"'\]>>> \[\033[0m\]'
+		;;
+	*bash)
+		PS1='\n\e[1m$(exitstatus) \e[36m\u\033[m @ \e[1;32m\H\033[m: $(pwd | sed "s|^/home/$(id -un)|~|" '"$lolcat_cmd"')'"$extra_newline"'\['"$prompt_style"'\]>>> \[\033[0m\]'
+		;;
+	*)
+		echo "Weird shell, not setting prompt" > /dev/stderr
+		;;
+esac
+	
 
 unset lolcat_cmd
 unset extra_newline

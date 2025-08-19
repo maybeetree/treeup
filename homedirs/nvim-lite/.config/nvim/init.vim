@@ -223,7 +223,17 @@ command! FzfFilePicker call FzfFilePicker()
 
 
 " MUST BE PRESENT, NOT AUTOCREATED
-let g:wiki_root = '~/wiki/notes'
+"
+function! WikiRoot()
+	let l:local = finddir('wiki', ';./')
+	return !empty(l:local) ? l:local : '~/wiki/notes'
+
+	"let l:local = findfile('.wiki.vim', ';./')
+	"return !empty(l:local) ? './' : '~/wiki/notes'
+endfunction
+
+let g:wiki_root = 'WikiRoot'
+"let g:wiki_root = '~/wiki/notes'
 
 let g:wiki_journal = {'frequency': 'weekly', 'date_format': {'weekly': '%Y-%m-%d'}, 'root': '~/wiki/journal'}
 

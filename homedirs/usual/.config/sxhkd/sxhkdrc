@@ -77,10 +77,13 @@ super + F5
 #super + g
 #	xcapt
 
-# nmtui
-# Doesn't work for some reason?
-super + shift + n
-	nmtui.sh
+
+super + n
+	xdotool search --onlyvisible --name polybar mousemove --window %2 10 10 click 1 search --onlyvisible --name wpa_gui mousemove --window %1 100 100
+
+
+#	nmtui.sh
+#
 	
 # make sxhkd reload its configuration files:
 super + @Escape
@@ -344,7 +347,7 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # balance desktop
-super + n
+super + shift + n
 	bspc node @focused:/ --balance
 
 

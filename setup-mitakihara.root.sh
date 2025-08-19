@@ -4,7 +4,6 @@ set -e
 
 for rootdir in \
 	sudoers \
-	media \
 	runit-rshared-root
 do
 	sudo cp \
