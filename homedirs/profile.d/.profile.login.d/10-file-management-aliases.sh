@@ -83,11 +83,26 @@ rln() {
 space() {
 	if [ -r /usr/share/dict/words ]
 	then
+		# Void
+		wordfile=/usr/share/dict/words
+	elif [ -r /usr/share/dict/british  ]
+		# Alpine
+		wordfile=/usr/share/dict/british
+	elif [ -r /usr/share/dict/british  ]
+		# Alpine
+		wordfile=/usr/share/dict/usa
+	else
+		wordfile=""
+		echo "wordfile not found" 1>&2
+	fi
+
+	if [ -n "$wordfile" ]
+	then
 		local name="$(shuf /usr/share/dict/words | grep -Pvm 3 '[^a-z]' | tr '\n' '-' | head -c -1)"
 	else
 		local name=$(date +"%Y-%m-%dT%H:%M:%S%z")
-		echo "/usr/share/dict/words not found" 1>&2
 	fi
+
 	mkdir -p ~/tmp/$name
 	cd ~/tmp/$name
 }
