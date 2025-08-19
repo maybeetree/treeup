@@ -12,7 +12,7 @@ for homedir in \
 	prompt \
 	tmux \
 	usual \
-	ibus-anthy \
+	fcitx-anthy \
 	xclip-helpers \
 	dragon-drop \
 	nvim-lite \
