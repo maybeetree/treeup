@@ -89,7 +89,7 @@ space() {
 	then
 		# Alpine
 		wordfile=/usr/share/dict/british
-	elif [ -r /usr/share/dict/british  ]
+	elif [ -r /usr/share/dict/usa  ]
 	then
 		# Alpine
 		wordfile=/usr/share/dict/usa
