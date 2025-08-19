@@ -86,9 +86,11 @@ space() {
 		# Void
 		wordfile=/usr/share/dict/words
 	elif [ -r /usr/share/dict/british  ]
+	then
 		# Alpine
 		wordfile=/usr/share/dict/british
 	elif [ -r /usr/share/dict/british  ]
+	then
 		# Alpine
 		wordfile=/usr/share/dict/usa
 	else
@@ -98,7 +100,7 @@ space() {
 
 	if [ -n "$wordfile" ]
 	then
-		local name="$(shuf /usr/share/dict/words | grep -Pvm 3 '[^a-z]' | tr '\n' '-' | head -c -1)"
+		local name="$(shuf "$wordfile" | grep -vm 3 '[^a-z]' | tr '\n' '-' | head -c -1)"
 	else
 		local name=$(date +"%Y-%m-%dT%H:%M:%S%z")
 	fi
