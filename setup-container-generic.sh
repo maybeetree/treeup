@@ -10,7 +10,8 @@ then
 	
 	if [ -f ~/.profile ]
 	then
-		mv ~/.profile ~/.profile.login.d/10-profile-local.sh
+		#mv ~/.profile ~/.profile.login.d/10-profile-local.sh
+		mv ~/.profile ~/.profile.bak
 	fi
 
 	for homedir in \

@@ -7,7 +7,7 @@ export RSD_ROOT=~/rsyncdata
 #   .------------------. 
 #  |                   |               test for bash
 #  |                   |    .---------------------------------------.
-if [ "${0#-}" != "\$0" ] || [ "$0" = "bash" ] && shopt -q login_shell
+if [ "${0#-}" != "\$0" ] || ( [ "$0" = "bash" ] && shopt -q login_shell ) 
 then
 	# Run all the scripts in ~/.profile.login.d
 	for script in ~/.profile.login.d/*.sh ; do
