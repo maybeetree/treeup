@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# If these are not unset and dmenu is a symlink to rofi,
+# things will break.
+unset ROFI_RETV
+unset ROFI_OUTSIDE
+
 if [ -z "$XDG_CONFIG_HOME" ]
 then
 	XDG_CONFIG_HOME=~/.config

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# If these are not unset and dmenu is a symlink to rofi,
+# things will break.
+unset ROFI_RETV
+unset ROFI_OUTSIDE
+
 choice="$(mpc lsplaylists | dmenu)"
 if [ -z "$choice" ]
 then
