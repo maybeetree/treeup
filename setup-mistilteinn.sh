@@ -23,6 +23,7 @@ for homedir in \
 	w3m \
 	git \
 	mpd \
+	git-gpg-tty-fix \
 	sudo-doas
 do
 	cp \
