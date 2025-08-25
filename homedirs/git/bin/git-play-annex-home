@@ -1,4 +1,10 @@
 #!/bin/sh
+
+if command -v coreutils
+then
+	alias realpath='coreutils --coreutils-prog=realpath '
+fi
+
 hostname="$(hostname)"
 remote="$1"
 #path="$(realpath "$PWD")"
