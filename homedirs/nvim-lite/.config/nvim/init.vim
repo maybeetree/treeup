@@ -148,10 +148,17 @@ function! TermSendCtrlD()
 endfunction
 command! TermSendCtrlD call TermSendCtrlD()
 
+"\	-path "**/.git/objects" -prune -o
+"\	-path "**/.git/hooks" -prune -o
+"\	-path "**/.git/refs" -prune -o
+"\	-path "**/.git/annex" -prune -o
+"\	-path "**/.git/logs" -prune -o
+
 let g:findfiles='find ./
 \	-name ".vscode" -prune -o
 \	-name ".cargo" -prune -o
-\	-path "**/.git/objects" -prune -o
+\	-name "target" -prune -o
+\	-path "**/.git" -prune -o
 \	-name "_minted*" -prune -o
 \	-name "__pycache__" -prune -o
 \	-name "__MACOSX" -prune -o
