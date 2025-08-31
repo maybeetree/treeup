@@ -10,6 +10,8 @@ remote="$1"
 #path="$(realpath "$PWD")"
 path="$(realpath "$PWD" --relative-to "$HOME")"
 
+echo "foo..."
+
 if [ -z "$remote" ]
 then
 	echo "no remote, use bbox.home?"
@@ -21,6 +23,7 @@ fi
 
 
 #ssh bbox.home -C 'rm -rf "'"$path"'"; mkdir -p "'"$path"'"; cd "'"$path"'"; git init'
+echo "SSHing..."
 ssh "$remote" -C 'if [ ! -d "$HOME/'"$path"'/.git" ]; then mkdir -p "$HOME/'"$path"'"; cd "'"$path"'"; git init; fi'
 git remote add "$remote" "ssh://$remote/~/$path"
 
