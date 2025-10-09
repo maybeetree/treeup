@@ -16,10 +16,13 @@ XF86Launch1
 	toggle_kmonad.sh
 
 super + apostrophe
-	tesseract-clipboard-manga.sh
+	scrot-ocr.sh
 
-super + shift + apostrophe
-	tesseract-clipboard-manga.sh horiz
+#super + apostrophe
+#	tesseract-clipboard-manga.sh
+#
+#super + shift + apostrophe
+#	tesseract-clipboard-manga.sh horiz
 
 # program launcher
 super + space
