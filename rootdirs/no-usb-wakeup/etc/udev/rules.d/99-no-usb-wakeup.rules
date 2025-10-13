@@ -1,0 +1,2 @@
+ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", RUN+="/bin/sh -c 'echo disabled > /sys$devpath/power/wakeup'"
+

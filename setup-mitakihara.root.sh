@@ -4,9 +4,10 @@ set -e
 
 for rootdir in \
 	sudoers \
+	no-usb-wakeup \
 	runit-rshared-root
 do
-	sudo cp \
+	cp \
 		--reflink=auto \
 		--recursive \
 		--no-target-directory \

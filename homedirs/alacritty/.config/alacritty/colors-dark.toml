@@ -7,7 +7,7 @@ foreground = '#ffffff'
 
 # Colors the cursor will use if `custom_cursor_colors` is true
 [colors.cursor]
-text = '#aaaaaa'
+text = '#ffffff'
 cursor = '#ff00ff'
 
 # Normal colors
