@@ -1,6 +1,8 @@
 #!/bin/sh
 
-# Double-ended annex sync
+# Annex remote merge
+# TODO other branches too not just main!
+
 
 if ( realpath "$(which realpath)" | grep busybox )
 then
@@ -18,7 +20,8 @@ then
 	exit 9
 fi
 
-set -e
+#set -e
+message="git-rdas $(date)"
+ssh "$1" "cd '$(realpath . --relative-to "$HOME")' || exit 1 ; git checkout -b main; git merge synced/main && git annex sync"
 git annex sync "$1"
-ssh "$1" "cd '$(realpath . --relative-to "$HOME")' && git annex sync"
 

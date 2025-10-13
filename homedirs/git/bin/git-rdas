@@ -2,6 +2,16 @@
 
 # Reverse Double-ended annex sync
 
+if ( realpath "$(which realpath)" | grep busybox )
+then
+	if ! command -v "coreutils"
+	then
+		echo "Need coreutils!"
+		exit 1
+	fi
+	alias realpath='coreutils --coreutils-prog=realpath'
+fi
+
 if [ -z "$1" ]
 then
 	echo "usage: $0 <remote>"

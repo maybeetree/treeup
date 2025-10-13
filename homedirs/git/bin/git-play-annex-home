@@ -1,8 +1,13 @@
 #!/bin/sh
 
-if command -v coreutils
+if ( realpath "$(which realpath)" | grep busybox )
 then
-	alias realpath='coreutils --coreutils-prog=realpath '
+	if ! command -v "coreutils"
+	then
+		echo "Need coreutils!"
+		exit 1
+	fi
+	alias realpath='coreutils --coreutils-prog=realpath'
 fi
 
 hostname="$(hostname)"
