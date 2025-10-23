@@ -25,6 +25,7 @@ for homedir in \
 	mpd \
 	git-gpg-tty-fix \
 	podman-service \
+	docker-rootless \
 	sudo-doas
 do
 	cp \
