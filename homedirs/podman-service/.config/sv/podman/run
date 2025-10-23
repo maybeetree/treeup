@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -z "$XDG_RUNTIME_DIR" ]
+then
+	echo "No runtime dir, bye!"
+	exit 1
+fi
+
+mkdir -p "${XDG_RUNTIME_DIR}/podman"
+podman system service "unix://${XDG_RUNTIME_DIR}/podman/podman.sock"
+

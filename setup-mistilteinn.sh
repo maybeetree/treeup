@@ -24,6 +24,7 @@ for homedir in \
 	git \
 	mpd \
 	git-gpg-tty-fix \
+	podman-service \
 	sudo-doas
 do
 	cp \
