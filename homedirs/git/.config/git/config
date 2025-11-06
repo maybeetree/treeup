@@ -27,6 +27,6 @@
 	# "recursive-annex-add-sync"
 	raas = "!git submodule foreach --recursive 'git add --all && git annex sync --commit' && git add --all && git annex sync --commit"
 	# ????
-	uraas = "!git submodule foreach --recursive 'git add --all && git annex sync --commit' && git add --all && git annex sync --commit"
+	uraas = "!git submodule foreach --recursive 'git add --all && git annex sync --commit' bbox.home && git add --all && git annex sync --commit bbox.home"
 	submods = "!find . -mindepth 1 -type d -exec test -d \"{}/.git\" \\; -exec git submodule add \"{}\" \"{}\" \\;"
 
