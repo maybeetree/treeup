@@ -20,6 +20,7 @@ for homedir in \
 	w3m \
 	mpd \
 	git-gpg-tty-fix \
+	docker-rootless \
 	loginctl-rofi
 do
 	cp \

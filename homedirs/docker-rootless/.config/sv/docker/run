@@ -1,4 +1,12 @@
 #!/bin/sh
 
-exec dockerd-rootless
+if command -v dockerd-rootless
+then
+	exec dockerd-rootless
+elif command -v dockerd-rootless.sh
+then
+	exec dockerd-rootless.sh
+fi
+
+
 
