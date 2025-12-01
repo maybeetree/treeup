@@ -281,6 +281,8 @@ let g:typst_cmd = '/bin/false'
 "let $GIT_PAGER = 'head -n 20'
 
 autocmd FileType html setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType xml setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType xsd setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 """"""""""""""""""""""""""""""""""""""""
 
