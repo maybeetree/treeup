@@ -1,0 +1,15 @@
+# FROM TREEUP!!
+
+
+# XP-Pen / UGTablet Deco Mini7 V2 — hidraw access
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", \
+  ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0948", \
+  MODE="0666"
+
+# Chatgpt was insisting that this should work but it doesnt
+# (permission is set correctly indeed, osu just doesnt seem to
+# pick up /dev/input/eventX devices)
+SUBSYSTEM=="input", KERNEL=="event*", \
+  ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0948", \
+  MODE="0660", GROUP="input"
+

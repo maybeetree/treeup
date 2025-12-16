@@ -5,7 +5,8 @@ for rootdir in \
 	force-evdev \
 	mistilteinn-misc \
 	keyd \
-	alsa-pipewire
+	alsa-pipewire \
+	udev
 do
 	doas cp \
 		--reflink=auto \
