@@ -1,6 +1,5 @@
 alias l="ls -a --color"
 alias ll="ls -lah --color"
-alias c="cp -r --reflink=always -i"
 alias r="trash -v"
 alias m="mv -i"
 alias o="handlr open"
@@ -15,6 +14,19 @@ alias ,,,,,,,="d ../../../../../.."
 #d() {
 #	cd "$@" && l
 #}
+
+c() {
+	if [ -z "$2" ]
+	then
+		cp -L -r --reflink=always -i "$1" .
+	else
+		cp -L -r --reflink=always -i "$@"
+	fi
+}
+
+mkdd() {
+	mkdir -p "$1" && cd "$1"
+}
 
 d() {
 	# Path passed to cd

@@ -98,7 +98,7 @@ super + @F1
 super + @F2
 	sh -c "fcitx5-remote -s keyboard-ru"
 super + @F3
-	sh -c "fcitx5-remote -s mozc || fcitx5-remote -s Anthy"
+	sh -c "fcitx5-remote -s mozc ; fcitx5-remote -s anthy"
 
 # dropdown terminal
 super + d

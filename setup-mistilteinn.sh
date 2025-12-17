@@ -13,6 +13,7 @@ for homedir in \
 	tmux \
 	usual \
 	fcitx-anthy \
+	fcitx-theme \
 	xclip-helpers \
 	dragon-drop \
 	nvim-lite \
